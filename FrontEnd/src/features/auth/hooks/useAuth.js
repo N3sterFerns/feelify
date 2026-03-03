@@ -1,0 +1,54 @@
+import { useContext, useEffect } from "react"
+import { AuthContext } from "../auth.context"
+import { getUser, login, register } from "../services/auth.service";
+import { toast } from "react-toastify";
+
+
+export const useAuth = () => {
+    const context = useContext(AuthContext)
+    const { setUser, user, setLoading, loading } = context;
+
+    const registerUser = async (userDetails) => {
+        try {
+            setLoading(true)
+            const res = await register(userDetails)
+            setUser(res.user)
+        } catch (error) {
+            throw error
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const loginUser = async (userDetails) => {
+        try {
+            setLoading(true)
+            const res = await login(userDetails)
+            setUser(res.user)
+        } catch (error) {
+            throw error
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const getUserData = async () => {
+        try {
+            setLoading(true)
+            const res = await getUser()
+            setUser(res.user)
+        } catch (error) {
+            if (error.response?.status !== 401) {
+                throw error
+            }
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        getUserData()
+    }, [])
+
+    return { registerUser, loginUser, getUserData, user, loading }
+}
