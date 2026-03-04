@@ -1,0 +1,106 @@
+$navbar-bg: #1f2937;
+$navbar-height: 60px;
+$accent-color: #3b82f6;
+$text-color: #f9fafb;
+$dropdown-bg: #374151;
+$dropdown-hover: #4b5563;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $navbar-height;
+  background-color: $navbar-bg;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 0 1rem;
+
+  .navbar-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $text-color;
+    }
+
+    .profile-section {
+      position: relative;
+
+      .profile-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 2px solid $accent-color;
+        }
+      }
+
+      .dropdown {
+        position: absolute;
+        top: $navbar-height;
+        right: 0;
+        width: 220px;
+        background-color: $dropdown-bg;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 200;
+
+        .user-info {
+          padding: 0.75rem 1rem;
+          border-bottom: 1px solid $dropdown-bg;
+
+          .username {
+            font-weight: 600;
+            color: $text-color;
+          }
+
+          .email {
+            font-size: 0.85rem;
+            color: $text-color;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            button {
+              width: 100%;
+              padding: 0.5rem 1rem;
+              text-align: left;
+              background: none;
+              border: none;
+              color: $text-color;
+              cursor: pointer;
+              font-size: 0.95rem;
+              transition: background 0.2s, color 0.2s;
+
+              &:hover {
+                background-color: $dropdown-hover;
+                color: $accent-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

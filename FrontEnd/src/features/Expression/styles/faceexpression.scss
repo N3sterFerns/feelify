@@ -1,0 +1,71 @@
+$primary-color: #1f2937; // Dark background
+$accent-color: #3b82f6;  // Button / highlight
+$text-color: #f9fafb;     // Light text
+$button-hover: #2563eb;
+
+.expression-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: $primary-color;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+
+  .expression-video {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    border: 2px solid $accent-color;
+    margin-bottom: 1.5rem;
+  }
+
+  .expression-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 1.5rem;
+    min-height: 2rem; // keep space even if empty
+  }
+
+  .detect-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-color;
+    background-color: $accent-color;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $button-hover;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 500px) {
+  .expression-container {
+    padding: 1rem;
+
+    .expression-video {
+      width: 100%;
+    }
+
+    .detect-btn {
+      width: 100%;
+    }
+  }
+}
