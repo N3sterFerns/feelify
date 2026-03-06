@@ -36,23 +36,28 @@ export const useAuth = () => {
         try {
             setLoading(true)
             const res = await getUser()
-            setUser(res.user)
+            if (res) {
+                setUser(res.user)
+            }
+
         } catch (error) {
-            if (error.response?.status !== 401) {
+            if (error.response?.status === 401) {
+                setUser(null)
+            } else {
                 throw error
             }
         } finally {
             setLoading(false)
         }
     }
-    
+
     const getLogOut = async () => {
         try {
             await logout()
         } catch (error) {
             throw error
         }
-        
+
     }
 
     useEffect(() => {
