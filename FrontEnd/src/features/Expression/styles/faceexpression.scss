@@ -2,6 +2,7 @@ $primary-color: #4f46e5; // Dark background
 $accent-color: #174fa8;  // Button / highlight
 $text-color: #f9fafb;     // Light text
 $button-hover: #2563eb;
+$text-color2: rgb(145, 145, 145);
 
 .expression-container {
   display: flex;
@@ -32,6 +33,12 @@ $button-hover: #2563eb;
     color: $text-color;
     margin-bottom: 1.5rem;
     min-height: 2rem; // keep space even if empty
+  }
+
+  .face-note{
+    color: $text-color2;
+    margin-top: 2rem;
+    font-style: italic;
   }
 
   .detect-btn {

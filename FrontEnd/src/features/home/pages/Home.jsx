@@ -21,7 +21,6 @@ const Home = () => {
           </div>
           <div>
             <FaceExpression onClick={({expression})=> handleGetSong(expression)}/>
-
           </div>
         </div>
       </div>

@@ -53,6 +53,7 @@ export default function FaceExpression({ onClick = () => { } }) {
                 Capture Expression
                 <span>ready</span>
             </button>
+            <p className="face-note">Data is processed locally and never stored on servers.</p>
         </div>
     );
 }
