@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../auth.context"
-import { getUser, login, register } from "../services/auth.service";
+import { getUser, login, logout, register } from "../services/auth.service";
 import { toast } from "react-toastify";
 
 
@@ -45,10 +45,19 @@ export const useAuth = () => {
             setLoading(false)
         }
     }
+    
+    const getLogOut = async () => {
+        try {
+            await logout()
+        } catch (error) {
+            throw error
+        }
+        
+    }
 
     useEffect(() => {
         getUserData()
     }, [])
 
-    return { registerUser, loginUser, getUserData, user, loading }
+    return { registerUser, loginUser, getUserData, user, loading, getLogOut }
 }

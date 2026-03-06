@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/navbar.scss";
 import { useAuth } from "../../auth/hooks/useAuth";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const profileRef = useRef(null);
+  const navigate = useNavigate()
+
+  const {getLogOut} = useAuth()
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -16,6 +20,16 @@ const Navbar = () => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+
+
+  const handleLogout = async ()=>{
+    try {
+      await getLogOut()
+      navigate("/login")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <nav className="navbar">
@@ -31,8 +45,8 @@ const Navbar = () => {
           {dropdownOpen && (
             <ul className="dropdown">
               <li><a href="#">Profile</a></li>
-              <li><a href="#">Settings</a></li>
-              <li><a href="#">Logout</a></li>
+              {/* <li><a href="#">Settings</a></li> */}
+              <li><a onClick={handleLogout} href="#">Logout</a></li>
             </ul>
           )}
         </div>

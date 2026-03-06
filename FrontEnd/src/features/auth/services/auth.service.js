@@ -16,6 +16,15 @@ export const login = async (userDetails)=>{
     }
 }
 
+
+export const logout = async ()=>{
+    try {
+        await axiosInstance.post("/auth/logout")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getUser = async ()=>{
     try {
         const res = await axiosInstance.get("/auth")

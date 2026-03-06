@@ -5,14 +5,14 @@ import Protected from "./features/auth/components/Protected";
 import Home from "./features/home/pages/Home";
 
 export const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Protected><Home/></Protected>,
-  // },
   {
     path: "/",
-    element: <Home/>,
+    element: <Protected><Home/></Protected>,
   },
+  // {
+  //   path: "/",
+  //   element: <Home/>,
+  // },
   {
     path: "/login",
     element: <Login/>,
