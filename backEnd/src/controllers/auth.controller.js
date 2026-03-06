@@ -39,7 +39,8 @@ const register = asyncHandler(async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
-            sameSite: "None"
+            sameSite: "None",
+             maxAge: 3 * 24 * 60 * 60 * 1000
         })
 
         return res.status(201).json({ message: "User created successfully", user: updatedUser, token })
@@ -79,7 +80,8 @@ const login = asyncHandler(async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
-            sameSite: "None"
+            sameSite: "None",
+             maxAge: 3 * 24 * 60 * 60 * 1000
         })
 
         const userObj = isUserExist.toObject();

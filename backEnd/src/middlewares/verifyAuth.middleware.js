@@ -13,15 +13,15 @@ const verifyAuth = async (req, res, next)=>{
         
         if(isTokenBlackListed) return res.status(401).json({message: "Invalid token"})
             
-        const isValidToken = await jwt.verify(token, process.env.JWT_SECRET);
+        const isValidToken =  jwt.verify(token, process.env.JWT_SECRET);
             
         if(!isValidToken) return res.status(401).json({message: "Invalid token"})
     
         req.user = isValidToken;
         next()
     } catch (error) {
-        console.log(error) 
-        throw error
+        console.log(error)
+        return res.status(401).json({ message: "Invalid or expired token" })
     }
 }
 
