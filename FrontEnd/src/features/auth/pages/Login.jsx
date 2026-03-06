@@ -70,7 +70,7 @@ const Login = () => {
                             <a href="#">Forgot password?</a>
                         </div>
 
-                        <button className="submit-btn" type="submit">
+                        <button className="submit-btn">
                             Sign in to Feelify
                         </button>
                     </form>
