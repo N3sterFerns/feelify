@@ -11,7 +11,7 @@ const App = () => {
   const {user} = useAuth()
   return (
     <div style={{position: "relative"}}>
-      {user && <Navbar/>}
+      {/* {user && <Navbar/>} */}
       <RouterProvider router={router} />
       <ToastContainer />
     </div>

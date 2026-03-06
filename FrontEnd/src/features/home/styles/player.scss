@@ -48,7 +48,7 @@
     &__mood {
         font-size: 0.72rem;
         text-transform: capitalize;
-        color: #dd4200;
+        color: #4f46e5;
         background: rgba(221, 66, 0, 0.12);
         padding: 2px 8px;
         border-radius: 20px;
@@ -93,7 +93,7 @@
 
     &__progress-fill {
         height: 100%;
-        background: #dd4200;
+        background: #4f46e5;
         border-radius: 4px;
         pointer-events: none;
         transition: width 0.1s linear;
@@ -144,12 +144,12 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: #dd4200;
+            background: #4f46e5;
             color: #fff;
             padding: 0;
 
             &:hover {
-                background: #ff5215;
+                background: #4f46e5;
                 color: #fff;
             }
         }
@@ -173,8 +173,8 @@
             color: #bbb;
 
             &:hover {
-                border-color: #dd4200;
-                color: #dd4200;
+                border-color: #4f46e5;
+                color: #4f46e5;
                 background: rgba(221, 66, 0, 0.08);
             }
         }
@@ -226,7 +226,7 @@
 
         &.active {
             background: rgba(221, 66, 0, 0.18);
-            color: #dd4200;
+            color: #4f46e5;
             font-weight: 700;
         }
     }
@@ -254,7 +254,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #dd4200;
+            background: #4f46e5;
             cursor: pointer;
             transition: transform 0.15s;
 
@@ -267,7 +267,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #dd4200;
+            background: #4f46e5;
             cursor: pointer;
             border: none;
         }

@@ -3,53 +3,37 @@ import "../styles/navbar.scss";
 import { useAuth } from "../../auth/hooks/useAuth";
 
 const Navbar = () => {
-    const {user} = useAuth()
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const profileRef = useRef(null);
 
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-
+  // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
         setDropdownOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        <div className="logo">Feelify</div>
-
-        <div className="profile-section" ref={dropdownRef}>
-          <button className="profile-btn" onClick={toggleDropdown}>
-            <img
-              className="avatar"
-              src={user?.avatar || "profile.png"}
-              alt="User"
-            />
-          </button>
-
+      <div className="navbar-left">
+        <h1 className="title">Feelify</h1>
+      </div>
+      <div className="navbar-right" ref={profileRef}>
+        <div
+          className="profile"
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+        >
+          <img src="profile.png" alt="Profile" className="profile-img" />
           {dropdownOpen && (
-            <div className="dropdown">
-              <div className="user-info">
-                <span className="email">{user?.email || "user@example.com"}</span>
-              </div>
-              <ul>
-                <li>
-                  <button>Account</button>
-                </li>
-                <li>
-                  <button>Settings</button>
-                </li>
-                <li>
-                  <button >Logout</button>
-                </li>
-              </ul>
-            </div>
+            <ul className="dropdown">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
           )}
         </div>
       </div>
@@ -58,3 +42,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
