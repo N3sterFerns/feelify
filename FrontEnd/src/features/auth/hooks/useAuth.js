@@ -10,7 +10,6 @@ export const useAuth = () => {
 
     const registerUser = async (userDetails) => {
         try {
-            setLoading(true)
             const res = await register(userDetails)
             setUser(res.user)
         } catch (error) {
@@ -22,7 +21,6 @@ export const useAuth = () => {
 
     const loginUser = async (userDetails) => {
         try {
-            setLoading(true)
             const res = await login(userDetails)
             setUser(res.user)
         } catch (error) {
@@ -34,7 +32,6 @@ export const useAuth = () => {
 
     const getUserData = async () => {
         try {
-            setLoading(true)
             const res = await getUser()
             if (res) {
                 setUser(res.user)
