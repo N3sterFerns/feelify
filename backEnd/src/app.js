@@ -17,6 +17,8 @@ app.use(cors({
 
 app.use("/api/auth", authRouter)
 app.use("/api/songs", songRouter)
-
+app.get("/", (req, res)=>{
+    res.json({status: 200})
+})
 
 module.exports = app
