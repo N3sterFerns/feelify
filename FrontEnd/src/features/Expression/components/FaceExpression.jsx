@@ -50,6 +50,7 @@ export default function FaceExpression({ onClick = () => { } }) {
                 ref={videoRef}
                 className="expression-video"
                 playsInline
+                height={400}
             />
             {/* <h2 className="expression-text">{expression}</h2> */}
             <button className="detect-btn" onClick={functionHandleClick}>
