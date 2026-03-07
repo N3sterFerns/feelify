@@ -6,27 +6,31 @@ import { toast } from "react-toastify";
 
 export const useAuth = () => {
     const context = useContext(AuthContext)
-    const { setUser, user, setLoading, loading } = context;
+    const { setUser, user, setLoading, loading, setBtnLoader, btnLoader } = context;
 
     const registerUser = async (userDetails) => {
         try {
+            setBtnLoader(true)
             const res = await register(userDetails)
             setUser(res.user)
         } catch (error) {
             throw error
         } finally {
             setLoading(false)
+            setBtnLoader(false)
         }
     }
 
     const loginUser = async (userDetails) => {
         try {
+            setBtnLoader(true)
             const res = await login(userDetails)
             setUser(res.user)
         } catch (error) {
             throw error
         } finally {
             setLoading(false)
+            setBtnLoader(false)
         }
     }
 
@@ -61,5 +65,5 @@ export const useAuth = () => {
         getUserData()
     }, [])
 
-    return { registerUser, loginUser, getUserData, user, loading, getLogOut }
+    return { registerUser, loginUser, getUserData, user, loading, getLogOut, btnLoader, setBtnLoader }
 }
