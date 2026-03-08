@@ -1,5 +1,5 @@
 .player {
-    position: fixed;
+    // position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -277,6 +277,7 @@
 /* Responsive: stack on smaller screens */
 @media (max-width: 640px) {
     .player {
+        position: fixed;
         flex-wrap: wrap;
         gap: 12px;
         padding: 10px 16px;

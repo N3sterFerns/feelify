@@ -3,16 +3,17 @@ import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 import Protected from "./features/auth/components/Protected";
 import Home from "./features/home/pages/Home";
+import DashBoard from "./features/home/pages/DashBoard";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Protected><Home/></Protected>,
-  },
   // {
   //   path: "/",
-  //   element: <Home/>,
+  //   element: <Protected><Home/></Protected>,
   // },
+  {
+    path: "/",
+    element: <DashBoard/>,
+  },
   {
     path: "/login",
     element: <Login/>,
