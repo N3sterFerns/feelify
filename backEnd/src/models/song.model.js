@@ -14,10 +14,10 @@ const songSchema = mongoose.Schema({
         type: String,
         required: [true, "title is required"],
     },
-    mood: {
-        type: String,
-        enum: ['happy', 'sad', 'surprised'],
-        default: "happy"
+    mood:{
+        type:String,
+        enum:['happy','sad','surprised','angry','neutral'],
+        default:"neutral"
     }
 
 }, {timestamps: true})

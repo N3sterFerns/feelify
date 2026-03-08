@@ -13,8 +13,9 @@ export default function MoodDetection({ onClick = () => { } }) {
 
   function functionHandleClick() {
     setBtnLoader(true)
-    const expression = detect({ videoRef, landmarkerRef, setExpression })
-    onClick({ expression })
+    const {emotion, intensity, level} = detect({ videoRef, landmarkerRef, setExpression })
+    console.log(emotion, intensity, level)
+    onClick({ emotion })
     setBtnLoader(false)
   }
 
