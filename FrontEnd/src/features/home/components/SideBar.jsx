@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../../auth/hooks/useAuth";
-import "../styles/sidebar.scss";
+import "../styles/sideBar.scss";
 
 export default function Sidebar({ open, setOpen }) {
   const { user, getLogOut } = useAuth()
