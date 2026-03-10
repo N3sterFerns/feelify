@@ -15,7 +15,10 @@ export const SongProvider = ({ children }) => {
         mood: "happy",
     })
     const [loading, setLoading] = useState(false)
-    const [analyzedDetails, setAnalyzedDetails] = useState(null || JSON.parse(localStorage.getItem("feelify")))
+    const [analyzedDetails, setAnalyzedDetails] = useState(()=>{
+        const data = JSON.parse(localStorage.getItem("feelify"))
+        return data ? data: null
+    })
     const [recommendations, setRecommendations] = useState([])
     const [expression, setExpression] = useState( JSON.parse(localStorage.getItem("feelify"))?.expression || "Detecting...");
     const [moodHistory, setMoodHistory] = useState([])

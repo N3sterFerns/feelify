@@ -6,14 +6,14 @@ import Home from "./features/home/pages/Home";
 import DashBoard from "./features/home/pages/DashBoard";
 
 export const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Protected><Home/></Protected>,
-  // },
   {
     path: "/",
-    element: <DashBoard/>,
+    element: <Protected><DashBoard/></Protected>,
   },
+  // {
+  //   path: "/",
+  //   element: <DashBoard/>,
+  // },
   {
     path: "/login",
     element: <Login/>,

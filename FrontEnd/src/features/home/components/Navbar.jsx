@@ -22,14 +22,7 @@ const Navbar = () => {
   }, []);
 
 
-  const handleLogout = async ()=>{
-    try {
-      await getLogOut()
-      navigate("/login")
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  
 
   return (
     <nav className="navbar">

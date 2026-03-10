@@ -18,8 +18,14 @@ export const useSong = () => {
             setLoading(true)
             const res = await getSong({ mood: emotion, intensity, level, recommended: expression })
             setSong(res.song)
-            setAnalyzedDetails({ mood: res.detectedEmotion, intensity: res.intensity, level: res.level })
-            localStorage.setItem("feelify", JSON.stringify({ mood: res.detectedEmotion, intensity: res.intensity, level: res.level, expression: expression }))
+            const details = {
+                mood: res.detectedEmotion,
+                intensity: res.intensity,
+                level: res.level,
+                expression: expression
+            }
+            setAnalyzedDetails(details)
+            localStorage.setItem("feelify", JSON.stringify(details))
             setRecommendations(res.songs)
             const history = await getMoodHistory()
             setMoodHistory(history.history)
@@ -37,10 +43,12 @@ export const useSong = () => {
         setMoodHistory(history.history)
     }
 
-    const clearMoods = async()=>{
+    const clearMoods = async () => {
         await clearMoodHistory()
+        localStorage.clear("feelify")
         await getHistory()
         await allAnalytics()
+        await handleGetSong()
     }
 
     const allAnalytics = async () => {
@@ -51,13 +59,22 @@ export const useSong = () => {
     const fetchHistory = async () => {
         await getHistory();
     };
-    
+
     useEffect(() => {
         fetchHistory();
         allAnalytics()
+        console.log("eorks")
     }, []);
-    
+
+    useEffect(() => {
+        const existing = JSON.parse(localStorage.getItem("feelify"))
+        localStorage.setItem("feelify", JSON.stringify({ ...existing, expression }))
+        console.log("repeat")
+    }, [analyzedDetails]);
 
 
-    return { setSong, song, analyticsGraph, loading, handleGetSong,clearMoods, analyzedDetails, recommendations, setExpression, expression, moodHistory }
+
+
+
+    return { setSong, song, analyticsGraph, loading, handleGetSong, clearMoods, analyzedDetails, recommendations, setExpression, expression, moodHistory }
 }

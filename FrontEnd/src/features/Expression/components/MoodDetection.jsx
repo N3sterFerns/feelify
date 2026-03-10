@@ -2,22 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/mood.scss";
 import { useAuth } from "../../auth/hooks/useAuth";
 import { detect, init } from "../utils/utils";
+import { useSong } from "../../home/hooks/useSong";
 
-export default function MoodDetection({ onClick = () => { }, setExpression }) {
+export default function MoodDetection({ onClick = () => { } }) {
   const videoRef = useRef(null);
   const landmarkerRef = useRef(null);
   const streamRef = useRef(null);
 
   // const [expression, setExpression] = useState("Detecting...");
   const { btnLoader, setBtnLoader } = useAuth()
+  const { setExpression } = useSong()
   
   function functionHandleClick() {
     setBtnLoader(true)
-    // const {emotion, intensity, level} = detect({ videoRef, landmarkerRef, setExpression })
-    // onClick({ emotion, intensity, level })
+    const {emotion, intensity, level} = detect({ videoRef, landmarkerRef, setExpression })
+    onClick({ emotion, intensity, level })
 
-    onClick({ emotion:"sad", intensity: "2.2", level: "high" })
-    setExpression("sad") // remove later
+    // onClick({ emotion:"sad", intensity: "2.2", level: "high" })
+    // setExpression("sad") // remove later
     
     setBtnLoader(false)
   }
