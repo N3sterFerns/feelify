@@ -49,6 +49,7 @@ export const useSong = () => {
         await getHistory()
         await allAnalytics()
         await handleGetSong()
+        setAnalyzedDetails(null)
     }
 
     const allAnalytics = async () => {
@@ -63,13 +64,12 @@ export const useSong = () => {
     useEffect(() => {
         fetchHistory();
         allAnalytics()
-        console.log("eorks")
     }, []);
 
     useEffect(() => {
         const existing = JSON.parse(localStorage.getItem("feelify"))
         localStorage.setItem("feelify", JSON.stringify({ ...existing, expression }))
-        console.log("repeat")
+        allAnalytics()
     }, [analyzedDetails]);
 
 

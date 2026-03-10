@@ -9,7 +9,7 @@ export default function MoodAnalysis({expression}) {
     <div style={{backgroundColor: moodColorMap[analyzedDetails?.mood]}} className="mood-analysis">
       <h2 className="mood-sec-title">Personalized Results</h2>
       <div className="mood-details">
-        <img src={`/images/${analyzedDetails?.mood || "happy"}.png`} width={100} height={100} alt="" />
+        <img src={`/images/${analyzedDetails?.mood || "thinking"}.png`} width={100} height={100} alt="" />
         <div>
           <h2>{expression}</h2>
         </div>
