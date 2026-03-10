@@ -15,7 +15,15 @@ export const SongProvider = ({ children }) => {
         mood: "happy",
     })
     const [loading, setLoading] = useState(false)
+    const [analyzedDetails, setAnalyzedDetails] = useState(null || JSON.parse(localStorage.getItem("feelify")))
+    const [recommendations, setRecommendations] = useState([])
+    const [expression, setExpression] = useState( JSON.parse(localStorage.getItem("feelify"))?.expression || "Detecting...");
+    const [moodHistory, setMoodHistory] = useState([])
+    const [analyticsGraph, setAnalyticsGraph] = useState([])
 
 
-    return <SongContext.Provider value={{ setSong, song, loading, setLoading }}>{children}</SongContext.Provider>
+    return <SongContext.Provider value={{ setSong, song, loading, setLoading, analyzedDetails, setAnalyzedDetails,
+        recommendations, setRecommendations, expression, setExpression, moodHistory, setMoodHistory,
+        analyticsGraph, setAnalyticsGraph
+     }}>{children}</SongContext.Provider>
 }

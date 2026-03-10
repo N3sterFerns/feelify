@@ -1,15 +1,15 @@
+import { useSong } from "../hooks/useSong";
 import "../styles/recommendations.scss";
 
 export default function Recommendations() {
 
-  const playlists = [
-    { title: "Chill Beats", desc: "Perfect for Focus" },
-    { title: "Focus Flow", desc: "Deep Concentration" },
-    { title: "Stardust Echoes", desc: "Celestial Melodies" },
-    { title: "Midnight Rain", desc: "Ambient Sounds" },
-    { title: "Cyber Vibe", desc: "Electric Energy" },
-    { title: "Zen Mode", desc: "Ultimate Peace" }
-  ];
+
+  const {recommendations, setSong} = useSong()
+
+  const handleSong = (song)=>{
+    console.log(song)
+    setSong(song)
+  }
 
   return (
     <div className="recommendations">
@@ -18,14 +18,14 @@ export default function Recommendations() {
 
       <div className="grid">
 
-        {playlists.map((p, i) => (
-          <div className="card" key={i}>
+        {recommendations?.map((p, i) => (
+          <div onClick={()=>handleSong(p)} className="card" key={i}>
 
-            <div className="cover"></div>
+            <div className="cover">
+              <img style={{width: "100%", height: "100%", objectFit: "contain"}} src={p.posterUrl} alt="" />
+            </div>
 
             <h4>{p.title}</h4>
-
-            <p>{p.desc}</p>
 
           </div>
         ))}

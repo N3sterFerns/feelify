@@ -1,0 +1,57 @@
+.mood-analytics {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+
+    background: #211032;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+
+    .analytics-title {
+        margin-bottom: 20px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--primary);
+        font-weight: 500;
+        gap: 0.5rem;
+
+    }
+
+    .chart-container {
+        width: 100%;
+        height: 350px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .mood-analytics {
+        padding: 16px;
+
+        .analytics-title {
+            font-size: 20px;
+        }
+
+        .chart-container {
+            height: 300px;
+        }
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .mood-analytics {
+        padding: 12px;
+
+        .analytics-title {
+            font-size: 18px;
+        }
+
+        .chart-container {
+            height: 250px;
+        }
+    }
+}

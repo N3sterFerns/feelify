@@ -1,0 +1,143 @@
+$mood-primary: #6366f1;
+$background-light: #f8fafc;
+$background-dark: #0f172a;
+
+.mood-history {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #211032;
+  border: 1px solid rgba($mood-primary, 0.2);
+  display: flex;
+  flex-direction: column;
+
+  .h-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      .icon {
+        color: $mood-primary;
+      }
+    }
+
+    .clear-btn {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: $mood-primary;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    height: 30vh;
+    padding: 0.2rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+  }
+
+  .history-item {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid rgba($mood-primary, 0.2);
+
+    .dot {
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: $mood-primary;
+      border: 4px solid $background-dark;
+    }
+
+    .h-content {
+      flex: 1;
+
+      .day {
+        font-size: 0.65rem;
+        color: rgba($mood-primary, 0.5);
+        font-weight: 500;
+        text-transform: capitalize;
+        margin-top: 2px;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+      }
+
+      .mood {
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .time {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: rgba($mood-primary, 0.6);
+        margin-top: 0.3rem;
+      }
+
+      .song {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba($mood-primary, 0.1);
+        border: 1px solid rgba($mood-primary, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        span {
+          font-size: 0.8rem;
+          color: $mood-primary;
+        }
+
+        .title {
+          font-size: 0.75rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    &.energetic .dot {
+      background: rgba($mood-primary, 0.4);
+    }
+
+    &.chill .dot {
+      background: rgba($mood-primary, 0.2);
+    }
+  }
+}

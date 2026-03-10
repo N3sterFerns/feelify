@@ -22,6 +22,7 @@ const songSchema = mongoose.Schema({
 
 }, {timestamps: true})
 
+songSchema.index({mood: 1})
 
 const songModel = mongoose.model("song", songSchema)
 

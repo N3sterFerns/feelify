@@ -2,18 +2,21 @@ import { useState } from "react";
 
 import Sidebar from "../components/SideBar";
 import Header from "../components/Header";
-import MoodDetection from "../components/MoodDetection";
-import MoodAnalysis from "../components/MoodAnalysis";
+import MoodDetection from "../../Expression/components/MoodDetection";
+import MoodAnalysis from "../../Expression/components/MoodAnalysis";
 import Recommendations from "../components/Recommendations";
 import Player from "../components/Player";
 
 import "../styles/dashboard.scss";
 import { useSong } from "../hooks/useSong";
+import MoodHistory from "../../Expression/components/MoodHistory";
+import MoodGraph from "../../Expression/components/MoodGraph";
 
 export default function Dashboard() {
 
   const [open, setOpen] = useState(false);
-  const { handleGetSong } = useSong();
+  
+  const { handleGetSong, setExpression,expression } = useSong();
 
 
   return (
@@ -29,9 +32,11 @@ export default function Dashboard() {
 
           <div className="mood-section">
 
-            <MoodDetection onClick={({expression})=> handleGetSong(expression)} />
+            <MoodDetection setExpression={setExpression} onClick={({emotion, intensity, level})=> handleGetSong({emotion, intensity, level})} />
 
-            <MoodAnalysis />
+            <MoodAnalysis expression={expression} />
+            <MoodHistory/>
+            <MoodGraph/>
 
           </div>
 

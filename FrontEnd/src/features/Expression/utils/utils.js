@@ -51,15 +51,22 @@ export const detect = ({ videoRef, landmarkerRef, setExpression }) => {
         const frownRight = getScore("mouthFrownRight");
         const browDownLeft = getScore("browDownLeft");
         const browDownRight = getScore("browDownRight");
+        const eyeBlinkLeft = getScore("eyeBlinkLeft");
+        const eyeBlinkRight = getScore("eyeBlinkRight");
+
 
         const happiness = (smileLeft + smileRight) / 2;
-        const sadness = (frownLeft + frownRight) / 2;
+        const sadness =
+            (frownLeft * 0.4) +
+            (frownRight * 0.4) +
+            (browUp * 0.15) +
+            ((eyeBlinkLeft + eyeBlinkRight) / 2 * 0.05);
         const surprise = (jawOpen + browUp) / 2;
         const anger = (browDownLeft + browDownRight) / 2;
 
         console.log(getScore("mouthFrownLeft"))
 
-        let emotion = "Netural";
+        let emotion = "netural";
         let intensity = 0;
         let level = "low"
 
@@ -77,8 +84,8 @@ export const detect = ({ videoRef, landmarkerRef, setExpression }) => {
         emotion = maxEmotion[0];
         intensity = maxEmotion[1];
 
-        if (intensity < 0.2) {
-            emotion = "Netural"
+        if (intensity < 0.15) {
+            emotion = "netural"
         }
 
         if (intensity >= 0.7) {
@@ -87,6 +94,11 @@ export const detect = ({ videoRef, landmarkerRef, setExpression }) => {
             level = "medium";
         } else if (intensity >= 0.2) {
             level = "low";
+        }
+
+        if (sadness > 0.25 && happiness < 0.3) {
+            emotion = "sad";
+            intensity = sadness;
         }
 
         const friendlyText = getRandomMoodText(emotion)
